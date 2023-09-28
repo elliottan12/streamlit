@@ -29,6 +29,8 @@ model = pickle.load(open(model_filepath, 'rb'))
 # Stopwords
 nltk.download('stopwords')
 stopwords = nltk.corpus.stopwords.words('english')
+# Download the 'punkt' resource
+nltk.download('punkt')
 
 # Functions 
 # Function to get data from reddit live
