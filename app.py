@@ -27,6 +27,7 @@ model_filepath = Path(__file__).parent / 'models/multinomial_naive_bayes_model.p
 model = pickle.load(open(model_filepath, 'rb')) 
 
 # Stopwords
+nltk.download('stopwords')
 stopwords = nltk.corpus.stopwords.words('english')
 
 # Functions 
