@@ -7,3 +7,5 @@ plotly==5.3.1
 wordcloud==1.9.2
 praw==7.7.1
 nltk==3.6.5
+pickleshare==0.7.5 
+pathlib==1.0.1 
