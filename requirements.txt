@@ -9,4 +9,4 @@ praw==7.7.1
 nltk==3.6.5
 pickleshare==0.7.5 
 pathlib==1.0.1 
-imbalanced-learn==0.10.1 
+imbalanced-learn>=0.5,<0.11
