@@ -312,13 +312,14 @@ if selected == 'Existing Businesses':
     	# Apply the cleaning function to the 'text' column of the DataFrame (Remove punctuation / stopwords / lemmatise)
 		data['text'] = data['text'].apply(clean_text)
 
-		# Load the pre-trained TF-IDF vectorizer
-		vec_filepath = Path(__file__).parent / 'models/vectorizer.pkl'
-		with open(vec_filepath, 'rb') as file:
-		    vectorizer = pickle.load(file)
+		# # Load the pre-trained TF-IDF vectorizer
+		# vec_filepath = Path(__file__).parent / 'models/vectorizer.pkl'
+		# with open(vec_filepath, 'rb') as file:
+		#     vectorizer = pickle.load(file)
 
 		# Assuming you have your training data in a DataFrame called 'df'
 		# Fit the vectorizer on the training data to ensure consistent features
+		vectorizer = TfidfVectorizer(stop_words='english', max_features=5000)
 		X_train = vectorizer.fit_transform(df['text'])
 		# Now, 'X_train' contains the TF-IDF features for the training text data
 		# Assuming you have your test data in a DataFrame called 'test_df'
