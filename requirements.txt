@@ -1,7 +1,7 @@
 streamlit==1.25.0
 streamlit-option-menu==0.3.6
 matplotlib==3.4.3
-scikit-learn
+scikit-learn>=0.24,<0.25
 pandas==1.5.3
 plotly==5.3.1
 wordcloud==1.9.2
