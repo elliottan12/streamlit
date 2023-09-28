@@ -312,14 +312,28 @@ if selected == 'Existing Businesses':
     	# Apply the cleaning function to the 'text' column of the DataFrame (Remove punctuation / stopwords / lemmatise)
 		data['text'] = data['text'].apply(clean_text)
 
-		# Import vectorizer
+		# Load the pre-trained TF-IDF vectorizer
 		vec_filepath = Path(__file__).parent / 'models/vectorizer.pkl'
-		# Assuming you have a pre-trained TF-IDF vectorizer saved as vectorizer.pkl
-		vectorizer = pickle.load(open(vec_filepath, 'rb')) 
+		with open(vec_filepath, 'rb') as file:
+		    vectorizer = pickle.load(file)
+
+		# Assuming you have your training data in a DataFrame called 'df'
 		# Fit the vectorizer on the training data to ensure consistent features
-		vectorizer.fit(df['text'])
+		X_train = vectorizer.fit_transform(df['text'])
+		# Now, 'X_train' contains the TF-IDF features for the training text data
+		# Assuming you have your test data in a DataFrame called 'test_df'
 		# Vectorize the text data using the loaded TF-IDF vectorizer
 		X_test = vectorizer.transform(data['text'])
+
+		# # Import vectorizer
+		# vec_filepath = Path(__file__).parent / 'models/vectorizer.pkl'
+		# # Assuming you have a pre-trained TF-IDF vectorizer saved as vectorizer.pkl
+		# vectorizer = pickle.load(open(vec_filepath, 'rb')) 
+		# # Fit the vectorizer on the training data to ensure consistent features
+		# vectorizer.fit(df['text'])
+		# # Vectorize the text data using the loaded TF-IDF vectorizer
+		# X_test = vectorizer.transform(data['text'])
+
 		# Encode the 'subreddit' column
 		le = LabelEncoder()
 		y = le.fit_transform(df['subreddit'])
