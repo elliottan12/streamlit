@@ -27,11 +27,8 @@ model_filepath = Path(__file__).parent / 'models/multinomial_naive_bayes_model.p
 model = pickle.load(open(model_filepath, 'rb')) 
 
 # Stopwords
-nltk.download('stopwords')
+nltk.download('all')
 stopwords = nltk.corpus.stopwords.words('english')
-# Download the 'punkt' resource
-nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger')
 
 # Functions 
 # Function to get data from reddit live
